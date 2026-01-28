@@ -112,6 +112,7 @@ class RPCServer:
         mode: str = "yolo",
     ):
         model_registry = ModelRegistry(config=self.config)
+        await model_registry.initialize()
         if not model_registry.has_any_model():
             raise RuntimeError(
                 "No LM model configured. Run `deadend init` to initialize the model configuration."
